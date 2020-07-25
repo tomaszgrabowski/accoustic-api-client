@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { RESULTS_PER_PAGE } from '../config';
+import { alertType } from '../enums/alerts';
 import { getResultsBySearchText, getResultsCount } from '../helpers/data-service';
 import { Prompt } from '../models/prompt';
+import Alert from './Alert';
 import Button from './Button';
 
 type Props = {
@@ -47,7 +49,6 @@ const SearchPage = ( props: Props ) => {
                 <Button text='Back' clickAction={ props.clickAction }/>
             </div>
             { !error && <>
-              <b>Serving { resultCount } results!!!</b>
               <ul>
                   { results.map( result => <li
                       key={ result.email }>{ result.firstName } { result.lastName } { result.email }</li> ) }
@@ -56,7 +57,7 @@ const SearchPage = ( props: Props ) => {
                 <ul className="pagination pagination-sm">
                     { Array.from( Array( totalPages ) ).map( ( item, index ) => {
                         const active = index === page ? 'active' : '';
-                        return <li key={ index } className={`page-item ${ active }`}>
+                        return <li key={ index } className={ `page-item ${ active }` }>
                             <a className="page-link" onClick={ () => setPage( index ) }>{ index }</a>
                         </li>;
                     } ) }
@@ -66,6 +67,9 @@ const SearchPage = ( props: Props ) => {
                 <Button text='Back' clickAction={ props.clickAction }/>
               </div>
             </> }
+            { error &&
+            <Alert message={ `Unable to fetch the data! Error: ${ error }` } type={ alertType.danger }/>
+            }
         
         </>
     );
