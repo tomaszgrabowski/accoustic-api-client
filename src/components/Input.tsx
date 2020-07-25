@@ -1,12 +1,7 @@
-import React, { ChangeEvent } from 'react';
+import React from 'react';
+import { InputHandlerProps } from '../helpers/common-types';
 
-interface Props {
-    // normally I would go with redux to avoid extensive props propagation, but since this is quite small all I believe
-    // its ok to do this...
-    inputHandler: ( event: ChangeEvent<HTMLInputElement> ) => void;
-}
-
-const Input = ( props: Props ) => {
+const Input = ( props: InputHandlerProps ) => {
     return (
         <>
             <input type='text' className='form-control' placeholder='Search user by email'
