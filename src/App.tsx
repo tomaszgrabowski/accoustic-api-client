@@ -1,7 +1,10 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import logo from '../src/img/acoustic.png';
 import './App.css';
+import Alert from './components/Alert';
 import Button from './components/Button';
+import Prompts from './components/Prompts';
+import { alertType } from './enums/alerts';
 import { getPromptsByStartingLetters } from './helpers/data-service';
 import { Prompt } from './models/prompt';
 
@@ -40,21 +43,11 @@ function App () {
                     </div>
                 </form>
                 { prompts.length !== 0 &&
-                <section style={ styles.prompt }>
-                  <ul style={ styles.ul }>
-                      {
-                          prompts.map( prompt => <li>{ prompt.email } : { prompt.firstName } { prompt.lastName }</li> )
-                      }
-                  </ul>
-                  <div className='text-center'>
-                    <Button text='Search'/>
-                  </div>
-                </section>
+                <Prompts prompts={ prompts }/>
                 }
                 { error &&
-                <section className='alert alert-danger'>Unable to fetch the data! Error: { error }</section>
+                <Alert message={ `Unable to fetch the data! Error: ${ error }` } type={ alertType.danger }/>
                 }
-            
             </section>
         </div>
     );
@@ -62,13 +55,4 @@ function App () {
 
 export default App;
 
-const styles = {
-    prompt: {
-        position: 'relative' as 'relative',
-        top: '-4.5rem',
-        backgroundColor: 'white'
-    },
-    ul: {
-        listStyleType: 'none'
-    }
-};
+
