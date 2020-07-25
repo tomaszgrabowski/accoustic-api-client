@@ -5,6 +5,9 @@ import { getResultsBySearchText, getResultsCount } from '../helpers/data-service
 import { Prompt } from '../models/prompt';
 import Alert from './Alert';
 import Button from './Button';
+import Pagination from './Pagination';
+import Result from './Result';
+import ResultsList from './ResultsList';
 
 type Props = {
     searchText: string;
@@ -45,24 +48,12 @@ const SearchPage = ( props: Props ) => {
     
     return (
         <>
-            <div className="row">
+            <div className="row mb-3">
                 <Button text='Back' clickAction={ props.clickAction }/>
             </div>
             { !error && <>
-              <ul>
-                  { results.map( result => <li
-                      key={ result.email }>{ result.firstName } { result.lastName } { result.email }</li> ) }
-              </ul>
-              <nav aria-label="...">
-                <ul className="pagination pagination-sm">
-                    { Array.from( Array( totalPages ) ).map( ( item, index ) => {
-                        const active = index === page ? 'active' : '';
-                        return <li key={ index } className={ `page-item ${ active }` }>
-                            <a className="page-link" onClick={ () => setPage( index ) }>{ index }</a>
-                        </li>;
-                    } ) }
-                </ul>
-              </nav>
+              <ResultsList results={results}/>
+              <Pagination totalPages={totalPages} page={page} setPage={setPage}/>
               <div className="row">
                 <Button text='Back' clickAction={ props.clickAction }/>
               </div>
