@@ -4,6 +4,7 @@ import Button from './Button';
 
 type Props = {
     prompts: Prompt[]
+    clickAction: () => void
 }
 
 const Prompts = ( props: Props ) => {
@@ -11,11 +12,11 @@ const Prompts = ( props: Props ) => {
         <section style={ styles.prompt }>
             <ul style={ styles.ul }>
                 {
-                    props.prompts.map( prompt => <li>{ prompt.email } : { prompt.firstName } { prompt.lastName }</li> )
+                    props.prompts.map( prompt => <li key={prompt.email}>{ prompt.email } : { prompt.firstName } { prompt.lastName }</li> )
                 }
             </ul>
             <div className='text-center'>
-                <Button text='Search'/>
+                <Button text='Search' clickAction={props.clickAction}/>
             </div>
         </section>
     );

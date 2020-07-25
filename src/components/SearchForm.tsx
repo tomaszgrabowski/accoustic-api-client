@@ -1,14 +1,18 @@
-import React from 'react';
-import { InputHandlerProps } from '../helpers/common-types';
+import React, { ChangeEvent } from 'react';
 import Button from './Button';
 import Input from './Input';
 
-const SearchForm = (props: InputHandlerProps) => {
+type Props = {
+    inputHandler: ( event: ChangeEvent<HTMLInputElement> ) => void;
+    clickAction: () => void
+}
+
+const SearchForm = ( props: Props ) => {
     return (
         <form>
             <div className="form-group text-center">
                 <Input inputHandler={ props.inputHandler }/>
-                <Button text='Search'/>
+                <Button text='Search' clickAction={ props.clickAction }/>
             </div>
         </form>
     );

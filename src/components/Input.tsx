@@ -1,7 +1,10 @@
-import React from 'react';
-import { InputHandlerProps } from '../helpers/common-types';
+import React, { ChangeEvent } from 'react';
 
-const Input = ( props: InputHandlerProps ) => {
+type Props = {
+    inputHandler: ( event: ChangeEvent<HTMLInputElement> ) => void;
+}
+
+const Input = ( props : Props ) => {
     return (
         <>
             <input type='text' className='form-control' placeholder='Search user by email' autoFocus={true}
