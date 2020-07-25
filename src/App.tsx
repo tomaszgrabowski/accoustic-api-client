@@ -38,7 +38,7 @@ function App () {
             { onSearchPage &&
             <SearchPage searchText={ search } clickAction={ () => {
                 setOnSearchPage( false );
-                setPrompts( [] );
+                setSearch( '' );
             } }/>
             }
             { !onSearchPage && prompts.length !== 0 &&
