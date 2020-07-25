@@ -1,6 +1,7 @@
 import React, { ChangeEvent, useEffect, useState } from 'react';
 import logo from '../src/img/acoustic.png';
 import './App.css';
+import Button from './components/Button';
 import { getPromptsByStartingLetters } from './helpers/data-service';
 import { Prompt } from './models/prompt';
 
@@ -35,18 +36,18 @@ function App () {
                                onChange={ handleUserInput }/>
                         <small id="emailHelp" className="form-text text-muted">We'll never share your information with
                             anyone else.</small>
-                        <button type="submit" className="btn btn-primary">Search</button>
+                        <Button text='Search'/>
                     </div>
                 </form>
                 { prompts.length !== 0 &&
-                <section style={styles.prompt}>
-                  <ul style={styles.ul}>
+                <section style={ styles.prompt }>
+                  <ul style={ styles.ul }>
                       {
                           prompts.map( prompt => <li>{ prompt.email } : { prompt.firstName } { prompt.lastName }</li> )
                       }
                   </ul>
                   <div className='text-center'>
-                    <button type="submit" className="btn btn-primary">Search</button>
+                    <Button text='Search'/>
                   </div>
                 </section>
                 }
@@ -70,4 +71,4 @@ const styles = {
     ul: {
         listStyleType: 'none'
     }
-}
+};
