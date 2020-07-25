@@ -25,7 +25,7 @@ function App () {
     return (
         <div className="container">
             <header className='text-center'>
-                <img src={ logo }/>
+                <img src={ logo } alt='Accoustic logo'/>
             </header>
             <hr/>
             <section>
@@ -39,8 +39,8 @@ function App () {
                     </div>
                 </form>
                 { prompts.length !== 0 &&
-                <section className='prompt'>
-                  <ul>
+                <section style={styles.prompt}>
+                  <ul style={styles.ul}>
                       {
                           prompts.map( prompt => <li>{ prompt.email } : { prompt.firstName } { prompt.lastName }</li> )
                       }
@@ -60,3 +60,14 @@ function App () {
 }
 
 export default App;
+
+const styles = {
+    prompt: {
+        position: 'relative' as 'relative',
+        top: '-4.5rem',
+        backgroundColor: 'white'
+    },
+    ul: {
+        listStyleType: 'none'
+    }
+}
