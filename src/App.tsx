@@ -3,6 +3,7 @@ import logo from '../src/img/acoustic.png';
 import './App.css';
 import Alert from './components/Alert';
 import Button from './components/Button';
+import Input from './components/Input';
 import Prompts from './components/Prompts';
 import { alertType } from './enums/alerts';
 import { getPromptsByStartingLetters } from './helpers/data-service';
@@ -35,10 +36,7 @@ function App () {
             <section>
                 <form>
                     <div className="form-group text-center">
-                        <input type='text' className='form-control' placeholder='Search user by email'
-                               onChange={ handleUserInput }/>
-                        <small id="emailHelp" className="form-text text-muted">We'll never share your information with
-                            anyone else.</small>
+                        <Input inputHandler={handleUserInput}/>
                         <Button text='Search'/>
                     </div>
                 </form>
