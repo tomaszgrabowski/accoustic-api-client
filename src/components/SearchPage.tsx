@@ -6,7 +6,6 @@ import { Prompt } from '../models/prompt';
 import Alert from './Alert';
 import Button from './Button';
 import Pagination from './Pagination';
-import Result from './Result';
 import ResultsList from './ResultsList';
 
 type Props = {

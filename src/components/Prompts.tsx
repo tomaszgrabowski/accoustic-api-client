@@ -1,6 +1,7 @@
 import React from 'react';
 import { Prompt } from '../models/prompt';
 import Button from './Button';
+import PromptsList from './PromptsList';
 
 type Props = {
     prompts: Prompt[]
@@ -10,13 +11,9 @@ type Props = {
 const Prompts = ( props: Props ) => {
     return (
         <section style={ styles.prompt }>
-            <ul style={ styles.ul }>
-                {
-                    props.prompts.map( prompt => <li key={prompt.email}>{ prompt.email } : { prompt.firstName } { prompt.lastName }</li> )
-                }
-            </ul>
+            <PromptsList prompts={ props.prompts }/>
             <div className='text-center'>
-                <Button text='Search' clickAction={props.clickAction}/>
+                <Button text='Search' clickAction={ props.clickAction }/>
             </div>
         </section>
     );
@@ -29,8 +26,5 @@ const styles = {
         position: 'relative' as 'relative',
         top: '-4.5rem',
         backgroundColor: 'white'
-    },
-    ul: {
-        listStyleType: 'none'
     }
 };
