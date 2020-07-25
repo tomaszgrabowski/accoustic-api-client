@@ -46,25 +46,27 @@ const SearchPage = ( props: Props ) => {
             <div className="row">
                 <Button text='Back' clickAction={ props.clickAction }/>
             </div>
-            <b>Serving { resultCount } results!!!</b>
-            <ul>
-                { results.map( result => <li
-                    key={ result.email }>{ result.firstName } { result.lastName } { result.email }</li> ) }
-            </ul>
-            <nav aria-label="...">
+            { !error && <>
+              <b>Serving { resultCount } results!!!</b>
+              <ul>
+                  { results.map( result => <li
+                      key={ result.email }>{ result.firstName } { result.lastName } { result.email }</li> ) }
+              </ul>
+              <nav aria-label="...">
                 <ul className="pagination pagination-sm">
-                    { Array.from( Array( totalPages ) ).map( ( item, index ) => <li className="page-item">
-                        <em className="page-link" onClick={ () => setPage( index ) }>{ index }</em></li> ) }
-                    {/*<li className="page-item disabled">*/ }
-                    {/*    <a className="page-link" href="#" tabIndex={ -1 }>1</a>*/ }
-                    {/*</li>*/ }
-                    {/*<li className="page-item"><a className="page-link" href="#">2</a></li>*/ }
-                    {/*<li className="page-item"><a className="page-link" href="#">3</a></li>*/ }
+                    { Array.from( Array( totalPages ) ).map( ( item, index ) => {
+                        const active = index === page ? 'active' : '';
+                        return <li key={ index } className={`page-item ${ active }`}>
+                            <a className="page-link" onClick={ () => setPage( index ) }>{ index }</a>
+                        </li>;
+                    } ) }
                 </ul>
-            </nav>
-            <div className="row">
+              </nav>
+              <div className="row">
                 <Button text='Back' clickAction={ props.clickAction }/>
-            </div>
+              </div>
+            </> }
+        
         </>
     );
 };
