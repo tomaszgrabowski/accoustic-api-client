@@ -25,6 +25,8 @@ const styles = {
     prompt: {
         position: 'relative' as 'relative',
         top: '-4.5rem',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        border: '1px solid #ced4da',
+        padding: '1rem 0 1rem 0'
     }
 };
